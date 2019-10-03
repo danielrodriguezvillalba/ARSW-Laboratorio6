@@ -42,7 +42,6 @@
         <button type="button"  onclick="app.plansAuthor()">Get Blueprints</button>
 
         </br>
-        </br>
         <body>
         <label id="autorLabel">autor</label>
         <label>'s blueprints :</label>
@@ -56,23 +55,24 @@
             </thead>
             <tbody>
             <tr>
-                <td id="nombreActor">Peter Parker</td>
-                <td id="puntos">peterparker@mail.com</td>
-                <td type="button" value=nombreActor onclick="app.drawPlan()">Open</td>
             </tr>
             </tbody>
         </table>
         <label>Total user points : </label>
         <label id="puntosLabel">0</label>
         </br>
-        </br>
 
         </body>
 
     </div>
     <div style="text-align:center">
-        <canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;"></canvas>
+        <canvas id="myCanvas" width="400" height="400" style="border:1px solid #000000;"></canvas>
     </div>
+    <div style="text-align:left">
+        <td type="button" onclick="app.drawPlan()">Save/Update</td>
+        <td type="button" onclick="app.drawPlan()">Delete</td>
+    </div>
+
 </div>
 
 </body>
