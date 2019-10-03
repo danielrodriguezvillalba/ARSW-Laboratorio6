@@ -1,4 +1,6 @@
 app= (function (){
+    var blueprintAct = null;
+
     var _funcModify = function (variable) {
         if(variable != null){
             var arreglo = variable.map(function(blueprint){
@@ -13,12 +15,13 @@ app= (function (){
             var valorTotal = arreglo.reduce(function(total, valor){
                 return total.value + valor.value;
             })
-            document.getElementById("autorLabel").innerHTML = author;
+            document.getElementById("autorLabel").innerHTML = authorP;
             document.getElementById("puntosLabel").innerHTML = valorTotal;
         }
     };
     var _funcDraw = function (vari) {
         if (vari) {
+            blueprintAct = vari;
             var lastx = null;
             var lasty = null;
             var actx = null;
@@ -44,8 +47,9 @@ app= (function (){
             });
         }
     };
+    var memoriaTemporal = null;
     _funcListener = function () {
-        var memoriaTemporal = [];
+        memoriaTemporal = [];
         var lastx = null;
         var lasty = null;
         var actx = null;
@@ -70,6 +74,52 @@ app= (function (){
             }
         }, false);
     };
+    var saveBlueprint = function () {
+        var arreglo = [];
+        blueprintAct.points.map(function (value) {
+            arreglo.push(value);
+            alert(arreglo);
+        });
+        memoriaTemporal.map(function (valor) {
+            valor 
+            arreglo.push(valor);
+            alert(arreglo);
+        });
+        blueprintAct.points = arreglo;
+    }
+
+
+
+    var putBlueprint = function(){
+        if (blueprintAct != null){
+            $.ajax({
+                url: "/blueprints/"+blueprintAct.author+"/"+blueprintAct.name,
+                type: 'PUT',
+                data: JSON.stringify(blueprintAct),
+                contentType: "application/json"
+            });
+        }
+        else {
+            alert("Entroooo Elseeeee");
+        }
+    }
+
+
+    var responseAll = null;
+    var blueprintsA = function(){
+        allBlueprints=$.get("http://localhost:8080/blueprints");
+        allBlueprints.then(
+            function (data) {
+                responseAll = data;
+            },
+            function () {
+                alert("$.get failed!");
+            }
+        );
+        return responseAll;
+    };
+
+
 
     function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect();
@@ -78,11 +128,12 @@ app= (function (){
              y: evt.clientY - rect.top
         };
     }
-    return {
 
+    return {
+        allBlueprints:blueprintsA,
             plansAuthor: function () {
-                author = document.getElementById("autor").value;
-                apimok.getBlueprintsByAuthor(author,_funcModify);
+                authorP = document.getElementById("autor").value;
+                apimok.getBlueprintsByAuthor(authorP,_funcModify);
 
             },
 
@@ -92,6 +143,7 @@ app= (function (){
 
                 apimok.getBlueprintsByNameAndAuthor(author,obra,_funcDraw);
             },
-            funListener: _funcListener
+            funListener: _funcListener,
+        inserte: saveBlueprint
         };
 })();
