@@ -19,6 +19,12 @@
         padding: 10px;
         text-align: left;
     }
+    .column {
+        float: left;
+        width: 50%;
+        padding: 10px;
+        height: 300px; /* Should be removed. Only for demonstration */
+    }
 </style>
 <head>
     <meta charset="UTF-8">
@@ -35,7 +41,7 @@
 <body>
 <h1>Blueprints</h1>
 <div>
-    <div style="text-align:left">
+    <div class="column">
         <a>AUTHOR :</a>
 
         <input type="text" id="autor">
@@ -65,13 +71,17 @@
         </body>
 
     </div>
-    <div style="text-align:center">
+    <div class="column" >
+        <button type="button" onclick="app">Create New Blueprint</button>
+        </br>
+        </br>
+        </br>
         <canvas id="myCanvas" width="400" height="400" style="border:1px solid #000000;"></canvas>
-    </div>
-    <div style="text-align:center">
-        <button type="button" onclick="app.inserte()">Save/Update</button>
+        </br>
+        <button type="button" onclick="app.modify()">Save/Update</button>
         <button type="button" onclick="app.allBlueprints()">Delete</button>
     </div>
+
     </br>
     </br>
 </div>

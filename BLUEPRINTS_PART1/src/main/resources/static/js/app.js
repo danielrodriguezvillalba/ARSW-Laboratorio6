@@ -1,6 +1,5 @@
 app= (function (){
     var blueprintAct = null;
-
     var _funcModify = function (variable) {
         if(variable != null){
             var arreglo = variable.map(function(blueprint){
@@ -9,6 +8,7 @@ app= (function (){
             $("#tabla tbody").empty();
             arreglo.map(function(blueprint){
                 var temporal = '<tr><td id="nombreActor">'+blueprint.key+'</td><td id="puntos">'+blueprint.value+'</td><td type="button" onclick="app.drawPlan(\''+blueprint.key+'\'),app.funListener()">Open</td></tr>';
+
                 $("#tabla tbody").append(temporal);
             })
 
@@ -46,17 +46,23 @@ app= (function (){
                 }
             });
         }
-    };
+    }
+    var holi = 0;
     var memoriaTemporal = null;
     _funcListener = function () {
-        memoriaTemporal = [];
         var lastx = null;
         var lasty = null;
         var actx = null;
         var acty = null;
         var c = document.getElementById("myCanvas");
         var ctx = c.getContext("2d");
-        c.addEventListener("click", function (evt) {
+        memoriaTemporal = [];
+        if( holi == 1 ){
+            c.removeEventListener("click", fun, false);
+            holi =0;
+        }
+        holi=holi+1;
+        c.addEventListener("click", fun = function (evt) {
             mousePos = getMousePos(c, evt);
             var pareja = [mousePos.x,mousePos.y];
             memoriaTemporal.push(pareja);
@@ -78,15 +84,21 @@ app= (function (){
         var arreglo = [];
         blueprintAct.points.map(function (value) {
             arreglo.push(value);
-            alert(arreglo);
         });
-        memoriaTemporal.map(function (valor) {
-            valor 
-            arreglo.push(valor);
-            alert(arreglo);
+        puntosNuevos = memoriaTemporal.map( function (valor) {
+            var x1=valor[0];
+            var y1=valor[1];
+            arreglo.push({x:x1,y:y1});
+            return arreglo;
+
         });
-        blueprintAct.points = arreglo;
-    }
+        putBlueprint();
+
+        var valorTotal = puntosNuevos.reduce(function(total, valor){
+            return total.value + valor.value;
+        })
+        document.getElementById("puntosLabel").innerHTML = valorTotal;
+    };
 
 
 
@@ -119,7 +131,9 @@ app= (function (){
         return responseAll;
     };
 
+    var insertBlueprint=(function () {
 
+    })
 
     function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect();
@@ -130,20 +144,18 @@ app= (function (){
     }
 
     return {
-        allBlueprints:blueprintsA,
+            allBlueprints:blueprintsA,
             plansAuthor: function () {
                 authorP = document.getElementById("autor").value;
                 apimok.getBlueprintsByAuthor(authorP,_funcModify);
-
             },
 
             drawPlan: function(name) {
                 author = document.getElementById("autor").value;
                 obra = name;
-
                 apimok.getBlueprintsByNameAndAuthor(author,obra,_funcDraw);
             },
             funListener: _funcListener,
-        inserte: saveBlueprint
+            modify: saveBlueprint
         };
 })();
