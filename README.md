@@ -39,9 +39,22 @@ var _funcDraw = function (vari) {
         }
     }
 ```
-- Add what is needed in your modules so that when new points are captured on the open canvas (if a canvas has not been selected, nothing should be done):
-  - The point is added at the end of the sequence of points on the current canvas (only in the application memory, NOT EVEN IN THE API!). 
-  - The drawing is repainted. 
+A continuacion se muestra la imagenes de la pagina en funcionamiento:
+
+![](https://github.com/danielrodriguezvillalba/ARSW-Laboratorio6/blob/master/imagenes/Principal.PNG)
+
+Se mostrará el respectivo resultado del boton save/update, por lo cual al principio está el plan con sus planes iniciales.
+
+![](https://github.com/danielrodriguezvillalba/ARSW-Laboratorio6/blob/master/imagenes/BPInicial.PNG)
+
+Se puede observar que al momento de pintar varios puntos mas y quedar de esta manera en el Canvas
+
+![](https://github.com/danielrodriguezvillalba/ARSW-Laboratorio6/blob/master/imagenes/BPCanvas.PNG)
+
+Se actualiza tambien en la lista de todos los planes:
+
+![](https://github.com/danielrodriguezvillalba/ARSW-Laboratorio6/blob/master/imagenes/BPFinalObj.PNG)
+
 - Add the Save/Update button. Respecting the client's current module architecture, do that by pressing the button:
 
   - Perform PUT action, with the updated plan, in its corresponding REST resource. 
@@ -87,7 +100,8 @@ var _funcDraw = function (vari) {
   - This option should change the way the 'save / update' option works, because in this case, when pressed the first time you should (also, using promises):
 Post the resource / blueprints to create the new plan. GET to this same resource, to update the list of plans and the user's score. 
 - Add the 'DELETE' button, so that (also with promises):
-  La correspondiente accion que realiza el DELETE del blueprint dado es la siguiente :
+
+La correspondiente accion que realiza el DELETE del blueprint dado es la siguiente :
 ```
 var deleteBlueprint = function(){
         var prom = $.ajax({
@@ -110,3 +124,7 @@ var deleteBlueprint = function(){
 ```
 Delete the canvas. DELETE the corresponding resource. 
 Make GET of the plans now available.
+
+Basandose en el ejercicio de prueba anterior, se puede observar que al oprimir el boton de Delete, efectivamente se borra el plan con el cual estabamos trabajando.
+
+![](https://github.com/danielrodriguezvillalba/ARSW-Laboratorio6/blob/master/imagenes/DELETE.PNG)
