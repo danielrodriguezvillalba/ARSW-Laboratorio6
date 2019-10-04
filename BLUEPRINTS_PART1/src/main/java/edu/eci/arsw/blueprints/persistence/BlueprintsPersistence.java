@@ -13,7 +13,8 @@ import java.util.Set;
  * @author hcadavid
  */
 public interface BlueprintsPersistence {
-    
+
+    public void deletelueprint(String author, String name) throws BlueprintNotFoundException;
     /**
      * 
      * @param bp the new blueprint

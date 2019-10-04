@@ -1,8 +1,10 @@
 app= (function (){
+    var valorTotal = null;
     var blueprintAct = null;
+    var arreglo = [];
     var _funcModify = function (variable) {
         if(variable != null){
-            var arreglo = variable.map(function(blueprint){
+            arreglo = variable.map(function(blueprint){
                 return {key:blueprint.name, value:blueprint.points.length}
             })
             $("#tabla tbody").empty();
@@ -12,7 +14,7 @@ app= (function (){
                 $("#tabla tbody").append(temporal);
             })
 
-            var valorTotal = arreglo.reduce(function(total, valor){
+            valorTotal = arreglo.reduce(function(total, valor){
                 return total.value + valor.value;
             })
             document.getElementById("autorLabel").innerHTML = authorP;
@@ -81,23 +83,21 @@ app= (function (){
         }, false);
     };
     var saveBlueprint = function () {
-        var arreglo = [];
+        var arregloS = [];
         blueprintAct.points.map(function (value) {
-            arreglo.push(value);
+            arregloS.push(value);
         });
-        puntosNuevos = memoriaTemporal.map( function (valor) {
+        memoriaTemporal.map( function (valor) {
             var x1=valor[0];
             var y1=valor[1];
-            arreglo.push({x:x1,y:y1});
-            return arreglo;
+            arregloS.push({x:x1,y:y1});
 
         });
+        blueprintAct.points = arregloS;
         putBlueprint();
-
-        var valorTotal = puntosNuevos.reduce(function(total, valor){
-            return total.value + valor.value;
-        })
-        document.getElementById("puntosLabel").innerHTML = valorTotal;
+        //valorArr = arreglo.get(blueprintAct.name);
+        //alert(valorArr);
+        document.getElementById("puntosLabel").innerHTML = valorTotal+memoriaTemporal.length-1;
     };
 
 
@@ -116,6 +116,24 @@ app= (function (){
         }
     }
 
+    var deleteBlueprint = function(){
+        var prom = $.ajax({
+            url: "/blueprints/"+blueprintAct.author+"/"+blueprintAct.name,
+            type: 'DELETE',
+            contentType: "application/json"
+        });
+
+        prom.then(
+            function(){
+                console.info('Delete OK');
+            },
+            function(){
+                console.info('Delete Fallo');
+            }
+        );
+
+        return prom;
+    }
 
     var responseAll = null;
     var blueprintsA = function(){
@@ -156,6 +174,7 @@ app= (function (){
                 apimok.getBlueprintsByNameAndAuthor(author,obra,_funcDraw);
             },
             funListener: _funcListener,
-            modify: saveBlueprint
+            modify: saveBlueprint,
+            delete:deleteBlueprint
         };
 })();
