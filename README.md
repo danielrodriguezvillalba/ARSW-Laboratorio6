@@ -92,8 +92,6 @@ Se actualiza tambien en la lista de todos los planes:
   ```
   - The total points of the user are recalculated. 
  
- Aqui esta la 
-  
   - As in this case there are three operations based on callbacks, and that they need to be performed in a specific order, consider how to use JavaScript promises using any of the available examples.
 - Add the 'Create new blueprint' button, so that when pressed:
   - The current canvas is deleted. 
