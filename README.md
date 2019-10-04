@@ -74,6 +74,7 @@ Se actualiza tambien en la lista de todos los planes:
   ```
   
   - Perform GET action to the resource /blueprints, to get back all the plans made.
+  
   La correspondiente accion que realiza el GET de todos los blueprints :
   ```
   var blueprintsA = function(){
