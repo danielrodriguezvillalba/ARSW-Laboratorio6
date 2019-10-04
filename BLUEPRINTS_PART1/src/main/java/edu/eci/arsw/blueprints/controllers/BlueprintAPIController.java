@@ -74,9 +74,9 @@ public class BlueprintAPIController {
     }
 
     @RequestMapping(path = "/{author}/{name}",method = RequestMethod.DELETE)
-    public ResponseEntity<?> DeleteBlueprint(@PathVariable ("author") String author, @PathVariable ("name")){
+    public ResponseEntity<?> DeleteBlueprint(@PathVariable ("author") String author, @PathVariable ("name") String name){
         try {
-            bps.deletelueprint(author, name);
+            bps.deleteBlueprint(author, name);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception ex) {
             Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
@@ -94,6 +94,6 @@ public class BlueprintAPIController {
             Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);
         }
-
+    }
 }
 
