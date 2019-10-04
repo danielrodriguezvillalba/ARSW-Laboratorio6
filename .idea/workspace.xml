@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e17c169a-8b2f-4a5e-b8f7-a97d26bc4939" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLUEPRINTS_PART1/src/main/java/edu/eci/arsw/blueprints/controllers/BlueprintAPIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BLUEPRINTS_PART1/src/main/java/edu/eci/arsw/blueprints/controllers/BlueprintAPIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLUEPRINTS_PART1/src/main/java/edu/eci/arsw/blueprints/persistence/BlueprintsPersistence.java" beforeDir="false" afterPath="$PROJECT_DIR$/BLUEPRINTS_PART1/src/main/java/edu/eci/arsw/blueprints/persistence/BlueprintsPersistence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLUEPRINTS_PART1/src/main/java/edu/eci/arsw/blueprints/persistence/impl/InMemoryBlueprintPersistence.java" beforeDir="false" afterPath="$PROJECT_DIR$/BLUEPRINTS_PART1/src/main/java/edu/eci/arsw/blueprints/persistence/impl/InMemoryBlueprintPersistence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLUEPRINTS_PART1/src/main/java/edu/eci/arsw/blueprints/services/BlueprintsServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/BLUEPRINTS_PART1/src/main/java/edu/eci/arsw/blueprints/services/BlueprintsServices.java" afterDir="false" />
-    </list>
+    <list default="true" id="e17c169a-8b2f-4a5e-b8f7-a97d26bc4939" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +55,7 @@
       <workItem from="1569373623523" duration="120000" />
       <workItem from="1570062147083" duration="6361000" />
       <workItem from="1570122163670" duration="16442000" />
+      <workItem from="1570167934965" duration="311000" />
     </task>
     <task id="LOCAL-00001" summary="Finalizacion parte 3">
       <created>1569286411587</created>
